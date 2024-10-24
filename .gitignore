@@ -1,0 +1,15 @@
+# add gitignore for java project
+
+# Compiled class file
+target/
+
+.classpath
+.project
+.settings/
+bin/
+*.log
+*.iml
+.idea/
+
+# MAC specific
+.DS_Store

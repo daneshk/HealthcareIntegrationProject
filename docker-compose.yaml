@@ -1,0 +1,30 @@
+version: '3.0'
+
+services:
+  app:
+    container_name: doctorinfo
+    ports:
+      - "9090:9090"
+      - "9091:9091"
+    image: daneshk/backend-healthcare-service
+    networks:
+      - 'healthcare-network'
+
+  wso2mi:
+    container_name: micro-integrator
+    depends_on:
+        - app
+    read_only: true
+    ports:
+      - "8290:8290"
+      - "8253:8253"
+      - "9164:9164"
+    image: daneshk/healthcareintegrationproject:1.0.0
+    tmpfs:
+      - /tmp
+    networks:
+      - 'healthcare-network'
+
+networks:
+  healthcare-network:
+    driver: bridge
